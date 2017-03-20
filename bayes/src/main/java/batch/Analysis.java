@@ -93,9 +93,7 @@ public class Analysis {
 				  }
 			  }
 			  br.close();
-			}catch(FileNotFoundException e){
-				e.printStackTrace();
-			}catch(IOException e){
+			}catch(Exception e){
 				e.printStackTrace();
 			}
 		return result;

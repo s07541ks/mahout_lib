@@ -1,5 +1,7 @@
 package batch;
 
+import java.io.File;
+
 import org.apache.mahout.classifier.mlp.RunMultilayerPerceptron;;
 
 public class Analysis {
@@ -7,13 +9,15 @@ public class Analysis {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		try {
-			System.out.println( "mahout train" );
+			File file = new File(args[2]);
+			if(file.exists()){
+				file.delete();
+			}
 			RunMultilayerPerceptron.main(new String[]{
-					"-i", "/vagrant/iris.csv",
-					"--skipHeader",
+					"-i", args[0],
 					"--columnRange", "0", "3",
-					"-mo", "/vagrant/iris_model.model",
-					"-o", "/vagrant/iris_result.txt"
+					"-mo", args[1],
+					"-o", args[2]
 				});
 		} catch (Exception e) {
 			e.printStackTrace();
