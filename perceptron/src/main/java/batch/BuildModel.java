@@ -26,7 +26,7 @@ public class BuildModel {
 			}
 			String[] c = new String[]{
 				"-mo", args[2],
-				"-ls", "4", "8", "3",
+				"-ls", String.valueOf(readFile(args[0]).length-1), "8", String.valueOf(b.length),
 				"-l", "0.2",
 				"-m", "0.35",
 				"-r", "0.0001"
@@ -45,12 +45,9 @@ public class BuildModel {
 		try{
 			  File file = new File( filename );
 			  BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
-			  String str;
-			  while((str = br.readLine()) != null){
-				  String[] arr = str.split(",");
-				  for( String tmp : arr ){
-					  result.add( tmp );
-				  }
+			  String[] arr = br.readLine().split(",");
+			  for( String tmp : arr ){
+				  result.add( tmp );
 			  }
 			  br.close();
 			}catch(Exception e){
